@@ -38,8 +38,8 @@ El objetivo de este proyecto es analizar datos históricos de ataques de tiburó
 - Número total de ataques  
 - Top países por frecuencia  
 - Top actividades  
-- % de ataques fatales  
-- Fatalidad media por actividad  
+- % de ataques fatales (Distribución por sexo y edad) 
+- Fatalidad media por actividad - 
 
 ---
 
