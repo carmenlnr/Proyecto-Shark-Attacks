@@ -23,3 +23,5 @@ df = pd.read_pickle("data.pkl") # ya se puede usar para futuros scripts sin nece
 # ERIKA LIMPIEZA DATOS
 # 1 elimino columnas
 # DE NOMBRES IGUALES PERO ESCRITOS DE DIFERETNES MANERA UNIFICARLOS, ESTANDARIZAR
+#Paso 1: Erika: Eliminación de las colummnas no deseadas.
+df = pd.read_pickle("data.pkl")
