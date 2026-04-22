@@ -23,6 +23,7 @@ El objetivo de este proyecto es analizar datos históricos de ataques de tiburó
 ## Proceso de análisis
 
 ### 1. Data Cleaning
+- Eliminación de colummnas que no tendremos en cuenta para el análisis
 - Reemplazo de valores faltantes (`? → NaN`)
 - Conversión de `Age` a formato numérico
 - Estandarización de `Activity`, `Country` y `Sex`
