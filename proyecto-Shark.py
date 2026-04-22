@@ -45,6 +45,25 @@ for col in df.columns:
 # hay muchos valores sucios 
 # age
 df["Age"] = df["Age"].astype(str).str.strip()
+df["Country"]= df["Country"].str.upper() #Pone todas las letras en mayúsculas.
+print(df["Country"].unique()) #muetra todos los países únicos.
 
-
-
+df["Country"]= df["Country"].str.strip() #Quita los espacios extra
+reemplazos = {
+"MALDIVE ISLANDS": "MALDIVES",
+"COLUMBIA": "COLOMBIA",
+"TURKS AND CAICOS":"TURKS & CAICOS",
+"REUNION ISLAND": "REUNION",
+"CEYLON": "SRI LANKA",
+"CEYLON (SRI LANKA)": "SRI LANKA",
+"ENGLAND": "UNITED KINGDOM",
+"SCOTLAND": "UNITED KINGDOM",
+"GRAND CAYMAN": "CAYMAN ISLANDS",
+"HAWAII": "USA",
+"OKINAWA": "JAPAN",
+"ST. MARTIN": "ST MARTIN",
+"ST. MAARTIN": "ST MARTIN",
+"UNITED ARAB EMIRATES (UAE)": "UNITED ARAB EMIRATES"
+}
+df["Country"]= df["Country"].replace(reemplazos)
+df.to_pickle("data.pkl")
