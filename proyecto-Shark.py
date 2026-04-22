@@ -18,6 +18,8 @@ print(df["Type"].unique()) #para ver valores exactos de una columna
 df = pd.read_pickle("data.pkl") # ya se puede usar para futuros scripts sin necesidad de releer excel
 
 ## CARMEN LIMPIEZA DATOS
-
+# 2 Carmen maneja valores nulos
 
 # ERIKA LIMPIEZA DATOS
+# 1 elimino columnas
+# DE NOMBRES IGUALES PERO ESCRITOS DE DIFERETNES MANERA UNIFICARLOS, ESTANDARIZAR
