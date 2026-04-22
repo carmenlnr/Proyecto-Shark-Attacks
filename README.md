@@ -16,8 +16,7 @@ El objetivo de este proyecto es analizar datos históricos de ataques de tiburó
 - `Activity` → Actividad realizada en el momento del ataque  
 - `Age` → Edad de la víctima  
 - `Sex` → Género  
-- `Fatal (Y/N)` → Resultado del ataque  
-- `Year` → Año del incidente  
+- `Fatal (Y/N)` → Resultado del ataque  #Dato a añadir.
 
 ---
 
@@ -34,7 +33,6 @@ El objetivo de este proyecto es analizar datos históricos de ataques de tiburó
 - Actividades con mayor número de incidentes  
 - Tasa de fatalidad global  
 - Tasa de fatalidad por actividad  
-- Evolución temporal de ataques  
 
 ### 3. KPIs utilizados
 - Número total de ataques  
