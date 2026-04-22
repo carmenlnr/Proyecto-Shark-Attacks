@@ -17,8 +17,6 @@ print(df["Type"].unique()) #para ver valores exactos de una columna
 
 df = pd.read_pickle("data.pkl") # ya se puede usar para futuros scripts sin necesidad de releer excel
 
-## CARMEN LIMPIEZA DATOS
-# 2 Carmen maneja valores nulos
 
 # ERIKA LIMPIEZA DATOS
 # 1 elimino columnas
@@ -30,3 +28,23 @@ df= df[['Country','Activity','Age','Sex']]
 print(df.head())
 print(df.shape)
 df.to_pickle("data.pkl")
+
+## CARMEN LIMPIEZA DATOS
+# 2 Carmen maneja valores nulos
+print(df.isna().sum()) # nos dice cuantos nan hay 
+print((df == "?").sum()) # nos dice cuantos ? hay
+
+
+df = df.replace("?", pd.NA) # reemplazamos "? por NA que panda es considerado como nulo NaN
+print(df.isna().sum()) # vemos cuantos NaN tenemos ahora
+print(df.head())
+
+for col in df.columns:
+    print(col, df[col].unique()) # para ver valores unicos
+
+# hay muchos valores sucios 
+# age
+df["Age"] = df["Age"].astype(str).str.strip()
+
+
+
