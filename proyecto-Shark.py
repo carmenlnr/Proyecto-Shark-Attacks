@@ -113,4 +113,3 @@ df.loc[~df["Sex_clean"].isin(valid), "Sex_clean"] = None
 print (df["Sex_clean"].value_counts())
 print (df["Sex_clean"].unique())
 
-print (df["Age_clean"].dtype)
