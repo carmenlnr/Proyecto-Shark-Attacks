@@ -25,3 +25,8 @@ df = pd.read_pickle("data.pkl") # ya se puede usar para futuros scripts sin nece
 # DE NOMBRES IGUALES PERO ESCRITOS DE DIFERETNES MANERA UNIFICARLOS, ESTANDARIZAR
 #Paso 1: Erika: Eliminación de las colummnas no deseadas.
 df = pd.read_pickle("data.pkl")
+df= pd.read_pickle("data.pkl")
+df= df[['Country','Activity','Age','Sex']]
+print(df.head())
+print(df.shape)
+df.to_pickle("data.pkl")
