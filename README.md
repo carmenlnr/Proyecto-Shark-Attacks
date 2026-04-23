@@ -51,7 +51,7 @@ El objetivo de este proyecto es analizar datos históricos de ataques de tiburó
 ---
 
 ## Próximos pasos
-
+- Muestra 1612 valores únicos con descripciones detalladas, es imposible limpiar 1 por 1, hay que agruparlos.
  
 
 ---

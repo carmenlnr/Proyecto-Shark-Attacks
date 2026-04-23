@@ -46,28 +46,6 @@ for col in df.columns:
 # age
 
 df["Age"] = df["Age"].astype(str).str.strip()
-df["Country"]= df["Country"].str.upper() #Pone todas las letras en mayúsculas.
-
-df["Country"]= df["Country"].str.strip() #Quita los espacios extra
-reemplazos = {
-"MALDIVE ISLANDS": "MALDIVES",
-"COLUMBIA": "COLOMBIA",
-"TURKS AND CAICOS":"TURKS & CAICOS",
-"REUNION ISLAND": "REUNION",
-"CEYLON": "SRI LANKA",
-"CEYLON (SRI LANKA)": "SRI LANKA",
-"ENGLAND": "UNITED KINGDOM",
-"SCOTLAND": "UNITED KINGDOM",
-"GRAND CAYMAN": "CAYMAN ISLANDS",
-"HAWAII": "USA",
-"OKINAWA": "JAPAN",
-"ST. MARTIN": "ST MARTIN",
-"ST. MAARTIN": "ST MARTIN",
-"UNITED ARAB EMIRATES (UAE)": "UNITED ARAB EMIRATES"
-}
-df["Country"]= df["Country"].replace(reemplazos)
-df["Country"] = df["Country"].str.replace("?","",regex=False).str.strip()
-df.to_pickle("data.pkl")
 
 print (df["Age"].unique())
 
@@ -137,6 +115,33 @@ df.loc[~df["Sex_clean"].isin(valid), "Sex_clean"] = None
 
 print (df["Sex_clean"].value_counts())
 print (df["Sex_clean"].unique())
+#Limpieza Country.
+
+df["Country"]= df["Country"].str.upper() #Pone todas las letras en mayúsculas.
+df["Country"]= df["Country"].str.strip() #Quita los espacios extra
+reemplazos = {
+"MALDIVE ISLANDS": "MALDIVES",
+"COLUMBIA": "COLOMBIA",
+"TURKS AND CAICOS":"TURKS & CAICOS",
+"REUNION ISLAND": "REUNION",
+"CEYLON": "SRI LANKA",
+"CEYLON (SRI LANKA)": "SRI LANKA",
+"ENGLAND": "UNITED KINGDOM",
+"SCOTLAND": "UNITED KINGDOM",
+"GRAND CAYMAN": "CAYMAN ISLANDS",
+"HAWAII": "USA",
+"OKINAWA": "JAPAN",
+"ST. MARTIN": "ST MARTIN",
+"ST. MAARTIN": "ST MARTIN",
+"UNITED ARAB EMIRATES (UAE)": "UNITED ARAB EMIRATES"
+}
+df["Country"]= df["Country"].replace(reemplazos)
+df["Country"] = df["Country"].str.replace("?","",regex=False).str.strip()
+df.to_pickle("data.pkl")
 print(df["Country"].unique())
+# Erika, comienzo con limpieza de "activity"
+pd.set_option('display.max_seq_items', None)
+print(df["Activity"].value_counts().to_string())
+# Muestra 1612 valores únicos con descripciones detalladas, es imposible limpiar 1 por 1, hay que agruparlos.
 
 
