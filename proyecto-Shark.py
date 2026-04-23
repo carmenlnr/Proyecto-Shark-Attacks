@@ -24,7 +24,7 @@ df = pd.read_pickle("data.pkl") # ya se puede usar para futuros scripts sin nece
 #Paso 1: Erika: Eliminación de las colummnas no deseadas.
 df = pd.read_pickle("data.pkl")
 #df= pd.read_pickle("data.pkl") #Quito esta línea porque estaba duplicada por mi parte
-df= df[['Country','Activity','Age','Sex']]
+df = df[["Country","Activity","Age","Sex","Fatal Y/N"]]
 print(df.head())
 print(df.shape)
 df.to_pickle("data.pkl")
@@ -175,4 +175,4 @@ print(df.head(10))
 print(df.shape)
 df.to_pickle("data.pkl")
 
-
+#Para recuperar columna "Fatal Y/N" hay que utilizar este código " df = df[["Country","Activity","Age","Sex","Fatal Y/N"]]" pero al principio del código en la sección "Limpiar columnas"
