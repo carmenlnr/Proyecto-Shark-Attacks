@@ -298,3 +298,43 @@ plt.ylabel("País")
 plt.tight_layout()
 plt.savefig("grafico_2_1_fatalidad_paises.png")
 plt.show()
+#EDA Y GRAFICOS EDA CARMEN
+top_activities = (
+    df["Activity"]
+    .value_counts()
+    .head(10)
+    .reset_index()
+)
+
+top_activities.columns = ["Activity", "Count"]
+
+print(top_activities)
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.barplot(data=top_activities, x="Count", y="Activity")
+plt.title("Top 10 actividades con más ataques")
+plt.show()
+
+#TASA DE FATALIDAD POR ACTIVIDAD 
+# Filtramos actividades con suficientes datos
+activity_counts = df["Activity"].value_counts()
+
+valid_activities = activity_counts[activity_counts > 10].index
+
+df_filtered = df[df["Activity"].isin(valid_activities)]
+
+fatal_by_activity = (
+    df_filtered
+    .groupby("Activity")["Fatalidad"]
+    .mean()
+    .sort_values(ascending=False)
+    .reset_index()
+)
+
+print(fatal_by_activity)
+
+sns.barplot(data=fatal_by_activity, x="Fatalidad", y="Activity")
+plt.title("Tasa de fatalidad por actividad")
+plt.show()
