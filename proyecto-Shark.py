@@ -176,3 +176,9 @@ print(df.shape)
 df.to_pickle("data.pkl")
 
 #Para recuperar columna "Fatal Y/N" hay que utilizar este código " df = df[["Country","Activity","Age","Sex","Fatal Y/N"]]" pero al principio del código en la sección "Limpiar columnas"
+#Erika: Organizo lista Country por orden alfabético.
+df = df.sort_values(by="Country")
+print(df["Country"].unique())
+print(df.head(10))
+print(df.shape)
+df.to_pickle("data.pkl")
