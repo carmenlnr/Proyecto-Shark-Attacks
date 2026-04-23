@@ -176,9 +176,16 @@ print(df.shape)
 df.to_pickle("data.pkl")
 
 #Para recuperar columna "Fatal Y/N" hay que utilizar este código " df = df[["Country","Activity","Age","Sex","Fatal Y/N"]]" pero al principio del código en la sección "Limpiar columnas"
+#Limpieza de "FATAL Y/N"
+df["Fatal Y/N"] = df["Fatal Y/N"].astype(str).str.strip().str.upper()
+df.loc[~df["Fatal Y/N"].isin(["Y", "N"]), "Fatal Y/N"] = None
+print(df["Fatal Y/N"].value_counts())
+df.to_pickle("data.pkl")
 #Erika: Organizo lista Country por orden alfabético.
 df = df.sort_values(by="Country")
 print(df["Country"].unique())
 print(df.head(10))
 print(df.shape)
 df.to_pickle("data.pkl")
+# Reseteo el índice porque todos los datos están desorganizados
+df = df.reset_index(drop=True)
