@@ -189,3 +189,26 @@ print(df.shape)
 df.to_pickle("data.pkl")
 # Reseteo el índice porque todos los datos están desorganizados
 df = df.reset_index(drop=True)
+#conversion FATAL
+print(df["Fatal Y/N"].value_counts(dropna=False))
+print(df["Fatal Y/N"].unique())
+
+df = df.rename(columns={"Fatal Y/N": "Fatalidad"})
+
+df["Fatalidad"] = (
+    df["Fatalidad"]
+    .astype(str)
+    .str.strip()
+    .str.upper()
+    .map({
+        "Y": 1,
+        "N": 0
+    })
+)
+
+df["Fatalidad"] = df["Fatalidad"].astype("Int64")
+
+print(df["Fatalidad"].value_counts(dropna=False))
+print (df["Fatalidad"].unique())
+
+print(df.head(10))
