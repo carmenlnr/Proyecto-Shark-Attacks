@@ -52,7 +52,7 @@ El objetivo de este proyecto es analizar datos históricos de ataques de tiburó
 
 ## Próximos pasos
 - Muestra 1612 valores únicos con descripciones detalladas, es imposible limpiar 1 por 1, hay que agruparlos.
- 
+- En fila "Others" hay casos especiales pendientes de revisión por varios erroes de escritura, que hay que separar de casos especiales. 
 
 ---
 

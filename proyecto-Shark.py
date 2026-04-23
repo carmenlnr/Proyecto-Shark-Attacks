@@ -162,4 +162,17 @@ def clasificar_activity(valor): #"valor" es el nombre que le damos al dato que v
 df["Activity_clean"]= df["Activity"].apply(clasificar_activity)
 print(df["Activity_clean"].value_counts())
 df.to_pickle("data.pkl")
+print(df.head(10))
+print(df.columns.tolist())
+print(df.shape)
+
+df["Age"]= df["Age_clean"]
+df["Sex"] = df ["Sex_clean"]
+df ["Activity"]= df ["Activity_clean"]  # esto sobreescribe
+df= df.drop(columns=["Age_clean", "Sex_clean", "Activity_clean"])
+
+print(df.head(10))
+print(df.shape)
+df.to_pickle("data.pkl")
+
 
