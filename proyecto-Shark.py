@@ -143,5 +143,23 @@ print(df["Country"].unique())
 pd.set_option('display.max_seq_items', None)
 print(df["Activity"].value_counts().to_string())
 # Muestra 1612 valores únicos con descripciones detalladas, es imposible limpiar 1 por 1, hay que agruparlos.
-
+#Clasificación Activity por categorías.
+def clasificar_activity(valor): #"valor" es el nombre que le damos al dato que va a entrar.
+    if pd.isna(valor):
+        return None
+    valor = valor.lower().strip()
+    if any(x in valor for x in["swim", "bath", "wading", "wade", "treading water", "standing", "floating", "playing", "splashing", "walking"]):
+        return "Swimming"
+    if any(x in valor for x in["surf", "bodyboard", "body board", "boogie board", "paddleboard", "paddle board", "kitesurf", "kite surf", "windsurf", "wakeboard", "waterski", "water ski", "sailboard"]):
+        return "Surfing"
+    if any(x in valor for x in ["div", "snorkel", "scuba", "freediv", "free div", "hookah", "skindiv", "skin div"]):
+        return "Diving"
+    if any(x in valor for x in ["fish", "spearfish", "spear fish", "angl", "netting", "lobster", "crab", "shrimp", "prawn"]):
+        return "Fishing"
+    if any(x in valor for x in ["kayak", "canoe", "rowing", "paddling", "sailing", "boating"]):
+        return "Kayaking"
+    return "Others"
+df["Activity_clean"]= df["Activity"].apply(clasificar_activity)
+print(df["Activity_clean"].value_counts())
+df.to_pickle("data.pkl")
 
