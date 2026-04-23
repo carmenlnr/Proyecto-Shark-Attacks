@@ -1,9 +1,9 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn  as sns
 
 df = pd.read_excel("GSAF5.xls", engine= "xlrd")
-
 df.to_pickle("data.pkl")
-
 print(df.head())
 
 print ("Dimensiones:", df.shape)
@@ -14,16 +14,12 @@ print(df.dtypes)
 print(df.nunique()) #num de valores unicos
 print(df["Type"].unique()) #para ver valores exactos de una columna
 
-
 df = pd.read_pickle("data.pkl") # ya se puede usar para futuros scripts sin necesidad de releer excel
 
-
 # ERIKA LIMPIEZA DATOS
-# 1 elimino columnas
-# DE NOMBRES IGUALES PERO ESCRITOS DE DIFERETNES MANERA UNIFICARLOS, ESTANDARIZAR
+# Elimino columnas. Después los nombres iguales pero escritos de diferentes maneras hay que unificarlos y estandarizarlos
 #Paso 1: Erika: Eliminación de las colummnas no deseadas.
 df = pd.read_pickle("data.pkl")
-#df= pd.read_pickle("data.pkl") #Quito esta línea porque estaba duplicada por mi parte
 df = df[["Country","Activity","Age","Sex","Fatal Y/N"]]
 print(df.head())
 print(df.shape)
@@ -256,3 +252,49 @@ fatalidad_pais = fatalidad_pais.sort_values("Tasa", ascending=False)
 
 for pais, fila in fatalidad_pais.head(10).iterrows():
     print(f"{pais}: {fila['Tasa']:.1f}% ({int(fila['Fatales'])} fatales de{int(fila['Total'])} ataques)")
+
+#GRAFICOS EDA ERIKA
+# Grafico 1.1
+paises_filtrados = ataques_por_pais[ataques_por_pais>=10]
+porcentajes = (paises_filtrados/ total_ataques)*100
+
+plt.figure(figsize=(14,8))
+sns.barplot(x=porcentajes.values, y=porcentajes.index, hue=porcentajes.index, palette="Blues_r", legend=False)
+plt.title("Porcentaje de ataques por país (mín. 10 ataques)", fontsize=14)
+plt.xlabel("Porcentaje sobre el total (%)")
+plt.ylabel("País")
+plt.tight_layout()
+plt.savefig("grafico_1_1_porcentaje_paises.png")
+plt.show()
+# Grafico 1.2
+top10 = ataques_por_pais.head(10)
+
+plt.figure(figsize=(12, 6))
+sns.barplot(x=top10.values, y=top10.index, hue=top10.index, palette="Blues_r", legend=False)
+plt.title("Top 10 países con más ataques de tiburón", fontsize=14)
+plt.xlabel("Número de ataques")
+plt.ylabel("País")
+plt.tight_layout()
+plt.savefig("grafico_1_2_top10_paises.png")
+plt.show()
+# Grafico 2
+plt.figure(figsize=(6, 6))
+labels = ["No fatal", "Fatal"]
+valores = [no_fatales, fatales]
+colores = ["#2196F3", "#F44336"]
+plt.pie(valores, labels=labels, colors=colores, autopct="%1.1f%%", startangle=90)
+plt.title("Tasa de fatalidad global", fontsize=14)
+plt.tight_layout()
+plt.savefig("grafico_2_fatalidad_global.png")
+plt.show()
+#Grafico 2.1
+top10_fatal = fatalidad_pais.head(10)
+
+plt.figure(figsize=(12, 6))
+sns.barplot(x=top10_fatal["Tasa"].values, y=top10_fatal.index, hue=top10_fatal.index, palette="Reds_r", legend=False)
+plt.title("Top 10 países con mayor tasa de fatalidad (mín. 10 ataques)", fontsize=14)
+plt.xlabel("Tasa de fatalidad (%)")
+plt.ylabel("País")
+plt.tight_layout()
+plt.savefig("grafico_2_1_fatalidad_paises.png")
+plt.show()
