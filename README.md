@@ -23,17 +23,16 @@ El objetivo de este proyecto es analizar datos históricos de ataques de tiburó
 ## Proceso de análisis
 
 ### 1. Data Cleaning
-- Eliminación de colummnas que no tendremos en cuenta para el análisis
+- Eliminación de colummnas que no tendremos en cuenta para el análisis.
 - Reemplazo de valores faltantes (`? → NaN`)
-- Conversión de `Age` a formato numérico
 - Estandarización de `Activity`, `Country` y `Sex`
 - Creación de variable binaria `Fatal` (0 = No, 1 = Sí)
 
 ### 2. Análisis Exploratorio (EDA)
-- Distribución de ataques por país  
-- Actividades con mayor número de incidentes  
-- Tasa de fatalidad global  
-- Tasa de fatalidad por actividad  
+- Distribución de ataques por país (E)
+- Tasa de fatalidad global (E)
+- Actividades con mayor número de incidentes  (C)
+- Tasa de fatalidad por actividad  (C)
 
 ### 3. KPIs utilizados
 - Número total de ataques  
@@ -53,6 +52,8 @@ El objetivo de este proyecto es analizar datos históricos de ataques de tiburó
 ## Próximos pasos
 - Muestra 1612 valores únicos con descripciones detalladas, es imposible limpiar 1 por 1, hay que agruparlos.
 - En fila "Others" hay casos especiales pendientes de revisión por varios erroes de escritura, que hay que separar de casos especiales. 
+- Se analizaría con más detalle la edad de las personas que han sido victimas de ataques (por rangos) y la fatalidad.
+- Qué sexo ha tenido más ataques y su relación con las actividaddes. 
 
 ---
 
