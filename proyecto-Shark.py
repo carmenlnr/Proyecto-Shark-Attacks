@@ -189,3 +189,7 @@ print(df.shape)
 df.to_pickle("data.pkl")
 # Reseteo el índice porque todos los datos están desorganizados
 df = df.reset_index(drop=True)
+#Presentación de los datos limpia en visualización para Excel.
+df_visual = df.copy()
+df_visual["Country"] = df_visual["Country"].where(df_visual["Country"] != df_visual["Country"].shift())
+print(df_visual.head(30))
