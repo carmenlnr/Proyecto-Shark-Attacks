@@ -212,3 +212,19 @@ print(df["Fatalidad"].value_counts(dropna=False))
 print (df["Fatalidad"].unique())
 
 print(df.head(10))
+
+#------------------------------------------------------ EDA -----------------------------------------------------------------------#
+#1. DISTRIBUCIÓN DE ATAQUES POR PAÍS
+print("∖n=== DISTRIBUCIÓN DE ATAQUES POR PAÍS ===")
+ataques_por_pais = df["Country"].value_counts()
+total_ataques = df["Country"].count()
+
+print(f"Total de ataques registrados: {total_ataques}")
+print(f"Total de países distintos: {ataques_por_pais.count()}")
+print(f"∖nDistribución completa:")
+print(ataques_por_pais.to_string())
+#1.1 DISTRIBUCIÓN DE ATAQUES POR PAISES (TOP 10)
+print("∖n=== TOP 10 PAISES CON MÁS ATAQUES DE TIBURÓN===")
+for pais, cantidad in ataques_por_pais.head(10).items():
+    porcentaje = (cantidad/ total_ataques)*100
+    print(f"{pais}: {cantidad} ataques ({porcentaje:.1f}%)")

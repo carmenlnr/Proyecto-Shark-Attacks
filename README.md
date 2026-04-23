@@ -30,7 +30,10 @@ El objetivo de este proyecto es analizar datos históricos de ataques de tiburó
 
 ### 2. Análisis Exploratorio (EDA)
 - Distribución de ataques por país (E)
+    -- Top 10 países con mñas ataques )hay mas de 180 países
+    -- Porcentaje que representa cada país sobre el total
 - Tasa de fatalidad global (E)
+    -- En que países los ataques son más mortales¿?
 - Actividades con mayor número de incidentes  (C)
 - Tasa de fatalidad por actividad  (C)
 
