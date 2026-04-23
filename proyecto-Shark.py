@@ -23,7 +23,7 @@ df = pd.read_pickle("data.pkl") # ya se puede usar para futuros scripts sin nece
 # DE NOMBRES IGUALES PERO ESCRITOS DE DIFERETNES MANERA UNIFICARLOS, ESTANDARIZAR
 #Paso 1: Erika: Eliminación de las colummnas no deseadas.
 df = pd.read_pickle("data.pkl")
-df= pd.read_pickle("data.pkl")
+#df= pd.read_pickle("data.pkl") #Quito esta línea porque estaba duplicada por mi parte
 df= df[['Country','Activity','Age','Sex']]
 print(df.head())
 print(df.shape)
@@ -47,7 +47,6 @@ for col in df.columns:
 
 df["Age"] = df["Age"].astype(str).str.strip()
 df["Country"]= df["Country"].str.upper() #Pone todas las letras en mayúsculas.
-print(df["Country"].unique()) #muetra todos los países únicos.
 
 df["Country"]= df["Country"].str.strip() #Quita los espacios extra
 reemplazos = {
@@ -67,6 +66,7 @@ reemplazos = {
 "UNITED ARAB EMIRATES (UAE)": "UNITED ARAB EMIRATES"
 }
 df["Country"]= df["Country"].replace(reemplazos)
+df["Country"] = df["Country"].str.replace("?","",regex=False).str.strip()
 df.to_pickle("data.pkl")
 
 print (df["Age"].unique())
@@ -137,4 +137,6 @@ df.loc[~df["Sex_clean"].isin(valid), "Sex_clean"] = None
 
 print (df["Sex_clean"].value_counts())
 print (df["Sex_clean"].unique())
+print(df["Country"].unique())
+
 
