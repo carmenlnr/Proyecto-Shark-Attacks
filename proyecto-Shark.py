@@ -228,3 +228,26 @@ print("∖n=== TOP 10 PAISES CON MÁS ATAQUES DE TIBURÓN===")
 for pais, cantidad in ataques_por_pais.head(10).items():
     porcentaje = (cantidad/ total_ataques)*100
     print(f"{pais}: {cantidad} ataques ({porcentaje:.1f}%)")
+#2.TASA DE FATABILIDAD GLOBAL
+print("∖n=== TASA DE FATALIDAD GLOBAL ===")
+fatales= (df["Fatalidad"]== 1).sum()
+no_fatales = (df["Fatalidad"]== 0).sum()
+desconocidos = df["Fatalidad"].isna().sum()
+total_conocidos = fatales + no_fatales
+tasa= (fatales/total_conocidos)*100
+
+print(f"Total ataques con datos conocidos: {total_conocidos}")
+print(f"Ataques fatales: {fatales} ({(fatales/total_conocidos)*100:.1f}%)")
+print(f"Ataques no fatales: {no_fatales} ({(no_fatales/total_conocidos)*100:.1f}%)")
+print(f"Ataques sin datos: {desconocidos}")
+print(f"\nTasa de fatalidad global: {tasa:.1f}%")
+#2.1 TASA DE FATALIDAD POR PAIS (TOP 10)
+print("∖n=== TOP 10 PAISES CON MAYOR TASA DE FATALIDAD===")
+fatalidad_pais = df.groupby("Country")["Fatalidad"].agg(["sum","count"])
+fatalidad_pais.columns = ["Fatales", "Total"]
+fatalidad_pais = fatalidad_pais[fatalidad_pais["Total"]>=10]
+fatalidad_pais["Tasa"] = (fatalidad_pais["Fatales"]/ fatalidad_pais["Total"])*100
+fatalidad_pais = fatalidad_pais.sort_values("Tasa", ascending=False)
+
+for pais, fila in fatalidad_pais.head(10).iterrows():
+    print(f"{pais}: {fila['Tasa']:.1f}% ({int(fila['Fatales'])} fatales de{int(fila['Total'])} ataques)")
