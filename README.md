@@ -60,5 +60,6 @@ El objetivo de este proyecto es analizar datos históricos de ataques de tiburó
 
 ---
 
-## Cómo replicar el proyecto
+# Enlace de la presentación de Canva.
+https://canva.link/snshilue28pdru0
 
